@@ -53,7 +53,7 @@ export const initialData = {
     { id: 'kostka-kid', name: 'Kostka Kid Mini', category: 'kolobezky', description: 'Lehká koloběžka pro děti.', params: ['Vhodnost ověříme podle věku a výšky'], riderHeight: 'pro děti', price: 400, active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001099-1f61a1f61c/KOSTKA%20KID%20MINI%202%20a-2.PNG?ph=a6234f4d0c' }
   ],
   accessories: [
-    { id: 'helma', name: 'Helma', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://images.unsplash.com/photo-1557803175-2f2e744e83c4?auto=format&fit=crop&w=500&q=80' },
+    { id: 'helma', name: 'Helma', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://images.unsplash.com/photo-1529422643029-d4585747aaf2?auto=format&fit=crop&w=500&q=80' },
     { id: 'zamek', name: 'Zámek', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://images.unsplash.com/photo-1583227122027-d2d360c66d3c?auto=format&fit=crop&w=500&q=80' },
     { id: 'sedacka', name: 'Dětská sedačka', price: 100, note: 'Pro děti do 22 kg', active: true, image: 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?auto=format&fit=crop&w=500&q=80' },
     { id: 'rukavice', name: 'Cyklistické rukavice', price: 30, note: 'Doplňkové vybavení', active: true, image: 'https://images.unsplash.com/photo-1529422643029-d4585747aaf2?auto=format&fit=crop&w=500&q=80' },
@@ -87,4 +87,3 @@ export const initialData = {
 export function cloneData(data = initialData) {
   return JSON.parse(JSON.stringify(data));
 }
-
