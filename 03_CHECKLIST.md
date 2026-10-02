@@ -24,3 +24,9 @@
 - [x] Kritické scénáře prošly testy
 - [x] Nejsou známé kritické chyby
 - [x] Dokumentace odpovídá skutečnosti
+- [x] Všechny stránky používají jednotný sans-serif design systém
+- [x] Ve viditelném UI nejsou emoji ikony
+- [x] Výlet obsahuje editovatelnou Mapy.cz GPS URL a veřejné CTA
+- [x] Admin umí vytvářet, řadit, skrývat a mazat výlety
+- [x] Produkty, výlety, galerie a hero podporují upload obrázku ze zařízení
+- [x] Google Maps CTA je dostupné na homepage i Kontakt

@@ -29,3 +29,17 @@
 - Rozhodnutí: Nasadit statický build do site `pujcovna-pod-palavou` v týmu `prchalmartin2` a zachovat konfiguraci v `netlify.toml`.
 - Důvod: Stabilní veřejná URL a možnost dalších production deploymentů stejného lokálně propojeného projektu.
 - Dopady: Vlastní doména není připojena; ostrý web zůstává beze změny.
+
+### 2026-10-02 Jednotný design systém a lineární SVG ikony
+
+- Kontext: Veřejné stránky používaly smíšenou typografii a emoji ikony.
+- Rozhodnutí: Použít jeden sans-serif font Inter, jednotnou hierarchii a vlastní malou sadu inline lineárních SVG ikon.
+- Důvod: Konzistentní vzhled bez nové knihovny a bez závislosti na emoji vykreslení operačního systému.
+- Dopady: Veškeré veřejné stránky i admin sdílejí stejné tokeny, radius, formuláře a responzivní breakpointy.
+
+### 2026-10-02 Mapy.cz trasy a lokální upload obrázků
+
+- Kontext: Každý výlet potřebuje vlastní GPS odkaz a administrátor musí spravovat fotografie bez kódu.
+- Rozhodnutí: Rozšířit `data.mjs` o `mapyUrl`, delší popis a poměr povrchů; obrázky v prototypu ukládat pomocí `FileReader` jako data URL v `localStorage` s limitem 2 MB.
+- Důvod: Funkční ověření administrační logiky bez backendu, připravené k mapování na Framer CMS/asset management.
+- Dopady: Upload je lokální pro konkrétní prohlížeč; pro produkci je nutné použít trvalé CMS úložiště.

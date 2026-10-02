@@ -1,7 +1,7 @@
 export const STORAGE_KEY = 'g2-pujcovna-content-v1';
 
 export const initialData = {
-  meta: { version: 1, project: 'G2 · Redesign webu půjčovny kol' },
+  meta: { version: 2, project: 'G2 · Redesign webu půjčovny kol' },
   brand: {
     name: 'Půjčovna jízdních kol pod Pálavou',
     shortName: 'Půjčovna pod Pálavou',
@@ -35,12 +35,52 @@ export const initialData = {
     inquiryTitle: 'Poptávka',
     inquiryLead: 'Pošlete nezávaznou poptávku. Ozveme se s potvrzením a nabídkou co nejdříve.'
   },
+  uiText: {
+    homeCategoriesEyebrow: 'Vyberte si vybavení',
+    homeCategoriesTitle: 'Kola pro každý výlet',
+    tripsTitle: 'Tipy na výlet',
+    galleryTitle: 'Z naší galerie',
+    mapyCta: 'Otevřít trasu v Mapy.cz',
+    googleMapsCta: 'Otevřít v Google Mapách',
+    inquiryCta: 'Poptat kola',
+    callCta: 'Zavolat',
+    catalogCta: 'Celá nabídka',
+    allTripsCta: 'Všechny tipy',
+    galleryCta: 'Zobrazit galerii',
+    defaultInquiryCta: 'Přejít na poptávku',
+    fillInquiryCta: 'Vyplnit poptávku',
+    emailCta: 'Napsat e-mail',
+    submitInquiryCta: 'Odeslat poptávku'
+  },
+  benefits: [
+    { id: 'benefit-choice', icon: 'bike', title: 'Pomůžeme s výběrem', text: 'Poradíme podle výšky, plánů a trasy.', active: true },
+    { id: 'benefit-service', icon: 'tool', title: 'Pravidelný servis', text: 'Kola připravujeme před každou výpůjčkou.', active: true },
+    { id: 'benefit-tips', icon: 'compass', title: 'Místní tipy', text: 'Doporučíme cíle a praktické zastávky.', active: true }
+  ],
+  included: [
+    { id: 'included-service', icon: 'tool', text: 'Pravidelně servisované vybavení', active: true },
+    { id: 'included-gear', icon: 'shield', text: 'Přilba, nářadí, hustilka a zámek', active: true },
+    { id: 'included-tips', icon: 'map', text: 'Místní tipy na výlety', active: true },
+    { id: 'included-support', icon: 'phone', text: 'Telefonická podpora během výpůjčky', active: true }
+  ],
+  contactContent: {
+    detailsTitle: 'Naše kontaktní údaje',
+    openingTitle: 'Provozní doba',
+    inquiryTitle: 'Nezávazná poptávka',
+    inquiryText: 'Pošlete nám termín, počet kol a výšky jezdců.',
+    locationTitle: 'Šakvice pod Pálavou',
+    arrivalTitle: 'Jak se k nám dostat',
+    carTitle: 'Autem',
+    carText: 'Najdete nás přímo v obci Šakvice na adrese Hlavní 50.',
+    handoverTitle: 'Půjčení a vrácení kol',
+    handoverText: 'Vybavení se předává v provozovně, případně po předchozí domluvě doveze.'
+  },
   categories: [
-    { id: 'kola', name: 'Kola', icon: '🚲', description: 'Spolehlivá kola pro výlety po okolí', active: true },
-    { id: 'elektrokola', name: 'Elektrokola', icon: '⚡', description: 'Delší trasy s lehkostí', active: true },
-    { id: 'detska-kola', name: 'Dětská kola', icon: '🌱', description: 'Pro malé cyklisty', active: true },
-    { id: 'kolobezky', name: 'Koloběžky', icon: '🛴', description: 'Zábava pro děti i dospělé', active: true },
-    { id: 'prislusenstvi', name: 'Příslušenství', icon: '◉', description: 'Vše potřebné na cestu', active: true }
+    { id: 'kola', name: 'Kola', icon: 'bike', description: 'Spolehlivá kola pro výlety po okolí', active: true },
+    { id: 'elektrokola', name: 'Elektrokola', icon: 'bolt', description: 'Delší trasy s lehkostí', active: true },
+    { id: 'detska-kola', name: 'Dětská kola', icon: 'child', description: 'Pro malé cyklisty', active: true },
+    { id: 'kolobezky', name: 'Koloběžky', icon: 'scooter', description: 'Zábava pro děti i dospělé', active: true },
+    { id: 'prislusenstvi', name: 'Příslušenství', icon: 'shield', description: 'Vše potřebné na cestu', active: true }
   ],
   products: [
     { id: 'author-classic', name: 'Author Classic', category: 'kola', description: 'Krosové kolo pro pohodové výlety.', params: ['Velikost dle domluvy', 'Pravidelný servis'], riderHeight: '155–195 cm', price: 500, active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001496-d0ba9d0bac/Author%20Classic%202022.webp?ph=a6234f4d0c' },
@@ -69,10 +109,10 @@ export const initialData = {
     { id: 'd1', place: 'Předem domluvené místo', price: 'individuálně', active: true }
   ],
   trips: [
-    { id: 't1', name: 'Novomlýnské nádrže', category: 'lehke', description: 'Výlet ze Šakvic k vodě a výhledům na Pálavu.', distance: 'orientačně 12 km', time: '1–2 hod', difficulty: 'Lehká', active: true, image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85' },
-    { id: 't2', name: 'Pavlov a Pálava', category: 'vyhledy', description: 'Vinařské obce, krajina a zastávky podle vlastního tempa.', distance: 'dle zvolené trasy', time: 'půlden', difficulty: 'Střední', active: true, image: 'https://www.palava.cz/templates/yootheme/cache/b5/palava-slide-03-b52d6fbd.jpeg' },
-    { id: 't3', name: 'Lednicko-valtický areál', category: 'pamatky', description: 'Celodenní inspirace za krajinou a památkami.', distance: 'dle zvolené trasy', time: 'celý den', difficulty: 'Střední', active: true, image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85' },
-    { id: 't4', name: 'Vinařské obce pod Pálavou', category: 'vinarske', description: 'Pohodová jízda mezi vinicemi a obcemi jižní Moravy.', distance: 'orientační', time: '2–4 hod', difficulty: 'Lehká', active: true, image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=85' }
+    { id: 't1', name: 'Okruh kolem Novomlýnských nádrží', category: 'lehke', description: 'Pohodový okruh ze Šakvic kolem vody a vinic.', longDescription: 'Rovinatá trasa vhodná pro rekreační cyklisty a rodiny se staršími dětmi. Nabízí výhledy na Pálavu a několik možností občerstvení.', distance: '38 km', time: '4–5 hod', difficulty: 'Lehká', roadRatio: '70 % cyklostezka / 30 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6500,48.8850;16.6060,48.8980;16.6750,48.9360&routeType=bike_road', active: true, image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85' },
+    { id: 't2', name: 'Pavlov a Pálava', category: 'vyhledy', description: 'Vinařské obce, krajina a zastávky podle vlastního tempa.', longDescription: 'Výlet propojuje Šakvice, Dolní Věstonice a Pavlov. Po cestě čekají výhledy na hřebeny Pálavy i Novomlýnské nádrže.', distance: '28 km', time: '3–4 hod', difficulty: 'Střední', roadRatio: '55 % cyklostezka / 45 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6425,48.8877;16.6725,48.8750&routeType=bike_road', active: true, image: 'https://www.palava.cz/templates/yootheme/cache/b5/palava-slide-03-b52d6fbd.jpeg' },
+    { id: 't3', name: 'Lednicko-valtický areál', category: 'pamatky', description: 'Celodenní inspirace za krajinou a památkami.', longDescription: 'Delší výlet k lednickému zámku a komponované krajině. Doporučujeme vyhradit celý den a počítat s návštěvnickým provozem.', distance: '62 km', time: '6–8 hod', difficulty: 'Střední', roadRatio: '60 % cyklostezka / 40 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.8035,48.7997;16.7750,48.7410&routeType=bike_road', active: true, image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85' },
+    { id: 't4', name: 'Vinařské obce pod Pálavou', category: 'vinarske', description: 'Pohodová jízda mezi vinicemi a obcemi jižní Moravy.', longDescription: 'Trasa vede krajinou vinohradů a menších obcí. Hodí se pro klidný půldenní výlet s možností zastavit na více místech.', distance: '25 km', time: '3–4 hod', difficulty: 'Lehká', roadRatio: '65 % cyklostezka / 35 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6040,48.8520;16.4930,48.8380&routeType=bike_road', active: true, image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=85' }
   ],
   gallery: [
     { id: 'g1', category: 'pujcovna', caption: 'Kola připravená na cestu', image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001116-d829ad829d/Ani%C4%8Dka%2CMaruna%2CPatrik%2CRomana.jpg?ph=a6234f4d0c', active: true },

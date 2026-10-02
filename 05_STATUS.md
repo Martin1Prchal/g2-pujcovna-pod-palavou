@@ -1,16 +1,16 @@
 # Status
 
-- Aktuální fáze: produkční prototyp nasazen na Netlify, veřejné zpřístupnění čeká na schválení
+- Aktuální fáze: sjednocený G2 prototyp připravený k nasazení na GitHub Pages
 - Naposledy aktualizováno: 2026-10-02
 
 ## Hotovo
-Sedm veřejných stránek, responzivní rozhraní, filtrování, dynamická galerie, poptávkový formulář, SMS souhrn, centrální datová vrstva, prototype admin, dokumentace, QA a trvalý Netlify site `pujcovna-pod-palavou`.
+Sedm veřejných stránek, jednotný sans-serif design systém, responzivní rozhraní, SVG ikony, filtrování, poptávkový formulář, centrální datová vrstva a přepracovaný Prototype Admin. Výletový model obsahuje Mapy.cz GPS URL, delší popis a poměr povrchů. Obrázky lze v adminu nahrát ze zařízení.
 
 ## Rozpracováno
-Vypnutí zděděné `Team Protection` pouze pro site `pujcovna-pod-palavou`, aby byl web dostupný bez Netlify přihlášení.
+Commit, push a ověření automatického GitHub Pages deploymentu.
 
 ## Následuje
-Uživatelské ověření na https://pujcovna-pod-palavou.netlify.app/ a případné obsahové korekce před převodem do Figmy a Frameru.
+Potvrzení reálných parametrů tras provozovatelem a pozdější mapování dat do Framer CMS.
 
 ## Blockers
-Vyžaduje výslovné schválení změny přístupového režimu site z private na public.
+Žádný technický blocker. Prototype Admin zůstává lokální demonstrací bez backendu.

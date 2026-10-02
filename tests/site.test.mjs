@@ -17,12 +17,47 @@ test('sedm veřejných stránek je v routeru', () => {
 });
 
 test('datový model obsahuje editovatelné kolekce', () => {
-  for (const key of ['products','categories','accessories','prices','trips','gallery','pageText','contact']) {
+  for (const key of ['products','categories','accessories','prices','trips','gallery','benefits','included','pageText','uiText','contactContent','contact']) {
     assert.ok(initialData[key], `Chybí ${key}`);
   }
   assert.ok(initialData.products.length >= 4);
   assert.ok(initialData.trips.length >= 3);
   assert.ok(initialData.gallery.length >= 4);
+});
+
+test('výlety mají datově řízenou GPS trasu a rozšířený obsah', () => {
+  for (const trip of initialData.trips) {
+    assert.match(trip.mapyUrl, /^https:\/\/(?:www\.)?mapy\.(?:cz|com)\//);
+    assert.ok(trip.longDescription);
+    assert.ok(trip.roadRatio);
+    assert.ok(trip.distance);
+    assert.ok(trip.time);
+  }
+  assert.match(app, /target="_blank"/);
+  assert.match(app, /state\.data\.uiText\.mapyCta/);
+  assert.match(app, /endsWith\('mapyUrl'\)/);
+});
+
+test('admin podporuje upload fotografií a editaci obsahu bez kódu', () => {
+  assert.match(app, /type="file"/);
+  assert.match(app, /FileReader/);
+  assert.match(app, /data-image-upload/);
+  assert.match(app, /imageAdminField/);
+  assert.match(app, /adminCollection\('categories'/);
+  assert.match(app, /\['products','Produkty'\]/);
+  assert.match(app, /\['contact','Kontakty'\]/);
+});
+
+test('homepage prezentuje kategorie a nevrací vybrané modely', () => {
+  assert.equal(initialData.uiText.homeCategoriesTitle, 'Kola pro každý výlet');
+  assert.doesNotMatch(app, /Vybraná kola z půjčovny/);
+  assert.match(app, /category-price/);
+});
+
+test('ve viditelném UI nejsou emoji ikony', () => {
+  assert.doesNotMatch(app, /[🚲⚡🌱📍🛴🔒☎✉🚗🔧ⓘ]/u);
+  assert.doesNotMatch(JSON.stringify(initialData), /[🚲⚡🌱📍🛴🔒☎✉🚗🔧ⓘ]/u);
+  assert.match(app, /function svgIcon/);
 });
 
 test('kontaktní údaje odpovídají zadání', () => {
@@ -45,4 +80,3 @@ test('stránka má metadata, responzivní CSS a skip link', () => {
   assert.match(css, /@media \(max-width: 720px\)/);
   assert.match(css, /prefers-reduced-motion/);
 });
-
