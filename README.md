@@ -2,6 +2,8 @@
 
 Funkční prototyp sedmi veřejných stránek a content-driven administrace. Veřejná část používá jednotný responzivní design systém, výlety podporují GPS odkazy Mapy.cz a fotografie lze v Prototype Adminu nahrát ze zařízení.
 
+Aktuální verze je spravována v GitHubu, publikována přes GitHub Pages a připravena pro navazující převod Figma → Framer.
+
 ## Spuštění
 
 ```powershell

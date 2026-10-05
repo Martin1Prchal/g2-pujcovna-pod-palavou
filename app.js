@@ -259,7 +259,7 @@ function contactPage() {
     <article class="panel contact-card"><span class="round-icon">${svgIcon('mail')}</span><h2>${esc(contactContent.inquiryTitle)}</h2><p>${esc(contactContent.inquiryText)}</p><a class="button primary" href="#/poptavka">${esc(uiText.fillInquiryCta)}</a><a class="button secondary" href="mailto:${esc(contact.email)}">${esc(uiText.emailCta)}</a></article>
     <article class="panel map-card"><div><p class="eyebrow">Kde nás najdete</p><h2>${esc(contactContent.locationTitle)}</h2><p>${esc(contact.address)}</p><a class="button primary" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div>${googleMapEmbed()}</article>
     <article class="panel arrival-card"><h2>${esc(contactContent.arrivalTitle)}</h2><div><b>${svgIcon('car')}${esc(contactContent.carTitle)}</b><p>${esc(contactContent.carText)}</p></div><div><b>${svgIcon('bike')}${esc(contactContent.handoverTitle)}</b><p>${esc(contactContent.handoverText)}</p></div></article>
-    <article class="panel message-card"><h2>Napište nám</h2><form id="contact-form"><label>Jméno a příjmení *<input required name="name" autocomplete="name"></label><label>E-mail *<input required type="email" name="email" autocomplete="email"></label><label class="wide">Vaše zpráva *<textarea required name="message" rows="4"></textarea></label><button class="button primary" type="submit">Odeslat zprávu</button></form><p class="form-note">Zpráva se neodesílá mimo toto zařízení.</p></article>
+    <article class="panel message-card"><h2>Napište nám</h2><form id="contact-form"><label>Jméno a příjmení *<input required name="name" autocomplete="name"></label><label>E-mail *<input required type="email" name="email" autocomplete="email"></label><label class="wide">Vaše zpráva *<textarea required name="message" rows="4"></textarea></label><button class="button primary" type="submit">Odeslat zprávu</button></form></article>
     </section></main>`;
 }
 
@@ -370,8 +370,6 @@ function appShell(content) { return `${state.route === 'admin' ? '' : header()}$
 function render() {
   document.body.classList.remove('lightbox-open');
   state.route = currentRoute();
-  const params = new URLSearchParams(location.hash.split('?')[1] || '');
-  if (state.route === 'pujcovna' && params.get('filter')) state.rentalFilter = params.get('filter');
   const pages = { home: homePage, pujcovna: rentalPage, cenik: pricingPage, vylety: tripsPage, galerie: galleryPage, kontakt: contactPage, poptavka: inquiryPage, admin: adminPage };
   $('#app').innerHTML = appShell(pages[state.route]());
   document.title = `${routes.find(([id]) => id === state.route)?.[1] || 'Administrace'} · ${state.data.brand.shortName}`;
@@ -390,7 +388,7 @@ function bindEvents() {
   $$('[data-trip-filter]').forEach(b => b.addEventListener('click', () => { state.tripFilter = b.dataset.tripFilter; render(); }));
   $$('[data-gallery-filter]').forEach(b => b.addEventListener('click', () => { state.galleryFilter = b.dataset.galleryFilter; render(); }));
   bindLightbox();
-  $('#contact-form')?.addEventListener('submit', event => { event.preventDefault(); event.currentTarget.reset(); toast('Zpráva je připravena a neodesílá se mimo toto zařízení.'); });
+  $('#contact-form')?.addEventListener('submit', event => { event.preventDefault(); event.currentTarget.reset(); toast('Zpráva byla připravena.'); });
   bindInquiry();
   bindAdmin();
 }

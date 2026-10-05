@@ -16,4 +16,4 @@ Projekt neobsahuje credentials ani externí účty.
 Prototype admin ukládá změny jen do konkrétního prohlížeče. Formuláře nic neposílají mimo zařízení. Výletové metriky a vybrané ceny je před produkcí potřeba znovu potvrdit.
 
 ## Co má příjemce vědět
-Spuštění: `npm start`. Admin je dostupný ze zápatí; demo heslo `palava`. Výsledek je připraven k uživatelskému ověření jako podklad pro Figma + Framer.
+Spuštění: `npm start`. Admin je dostupný ze zápatí; demo heslo `palava`. Aktuální `main` se publikuje přes GitHub Pages. Výsledek je připravený pro navazující postup Figma → Framer.

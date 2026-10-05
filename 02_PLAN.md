@@ -6,6 +6,9 @@ Lokální content-driven prototyp jako lehká SPA s hash routingem a lokální a
 ## Technologie a nástroje
 Sémantické HTML, moderní CSS, vanilla JavaScript, Node.js bez externích runtime závislostí.
 
+## Verzování a hosting
+Existující GitHub repozitář a automatické nasazení větve `main` na GitHub Pages.
+
 ## Architektura / struktura
 `data.mjs` je výchozí datová vrstva; veřejné stránky i admin čtou stejný stav. Změny adminu se ukládají do `localStorage` a lze je exportovat/importovat jako JSON.
 
@@ -18,4 +21,7 @@ Sémantické HTML, moderní CSS, vanilla JavaScript, Node.js bez externích runt
 
 ## Pořadí realizace
 Sdílený shell → obsahové renderery → formulář → admin → automatické a vizuální testy.
+
+## Následující fáze
+Figma → Framer.
 

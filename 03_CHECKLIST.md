@@ -38,3 +38,6 @@
 - [x] Obrázky galerie se otevírají v responzivním lightboxu s klávesovým ovládáním
 - [x] Kategorie na homepage vedou bez query parametrů na Půjčovnu
 - [x] Veřejné označení prototypu a dokumentační odkazy na nepoužívaný hosting jsou odstraněné
+- [x] Nepoužívaná logika query filtru a konfigurace dřívějšího hostingu jsou odstraněné
+- [x] GitHub Pages workflow zůstává beze změny
+- [x] Projekt je připravený pro další fázi Figma → Framer

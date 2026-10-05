@@ -61,10 +61,13 @@ test('homepage prezentuje kategorie a nevrací vybrané modely', () => {
   assert.match(app.match(/function contactBand\(\)[\s\S]*?function ctaBand/)?.[0] || '', /googleMapEmbed\(\)/);
 });
 
-test('veřejný web neobsahuje označení prototypu a dokumentace nezmiňuje Netlify', () => {
+test('veřejný web neobsahuje označení prototypu a dokumentace nezmiňuje nepoužívaný hosting', () => {
   assert.doesNotMatch(app, /G2 funkční prototyp|Prototype admin|V prototypu/i);
-  assert.doesNotMatch(html.match(/<meta name="description"[^>]+>/)?.[0] || '', /prototyp/i);
-  assert.doesNotMatch(docs, /netlify/i);
+  assert.doesNotMatch(html.match(/<meta name="description"[^>]+>/)?.[0] || '', /prototyp|demo|G2/i);
+  assert.doesNotMatch(app.match(/function contactPage\(\)[\s\S]*?function contactBand/)?.[0] || '', /prototyp|form-note/i);
+  assert.doesNotMatch(docs, new RegExp(['net', 'lify'].join(''), 'i'));
+  assert.equal(fs.existsSync(path.join(root, ['net', 'lify.toml'].join(''))), false);
+  assert.doesNotMatch(app.match(/function render\(\)[\s\S]*?function bindEvents/)?.[0] || '', /URLSearchParams|params\.get\('filter'\)/);
 });
 
 test('homepage a kontakt používají responzivní Google Maps embed', () => {

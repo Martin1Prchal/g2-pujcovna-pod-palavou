@@ -46,8 +46,13 @@
 
 ### 2026-10-05 Zjednodušení kategorií a kontaktu na homepage
 
-- Rozhodnutí: Z kategorií odstranit ceny a ponechat pouze název, popis a větší obrázek. Kontaktní část tvoří jediný blok bez samostatného mapového panelu.
-- Důvod: Homepage má sloužit jako přehled kategorií; detail cen zůstává v ceníku. Kontakt má obsahovat pouze údaje a CTA na Google Maps.
+- Rozhodnutí: Z kategorií odstranit ceny a ponechat pouze název, popis a větší obrázek. Kontaktní část tvoří jediný blok s vloženou Google mapou a CTA.
+- Důvod: Homepage má sloužit jako přehled kategorií; detail cen zůstává v ceníku. Kontakt současně ukazuje přesnou polohu půjčovny.
+
+### 2026-10-05 Verzování a hosting
+
+- Rozhodnutí: Zdrojový kód spravovat v existujícím GitHub repozitáři a větev `main` automaticky publikovat přes GitHub Pages.
+- Důvod: Jeden konzistentní workflow pro verzování, kontrolu a veřejný náhled před převodem do Figmy a Frameru.
 
 ### 2026-10-05 Veřejná Půjčovna bez inventárních modelů
 
