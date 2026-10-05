@@ -43,3 +43,22 @@
 - Rozhodnutí: Rozšířit `data.mjs` o `mapyUrl`, delší popis a poměr povrchů; obrázky v prototypu ukládat pomocí `FileReader` jako data URL v `localStorage` s limitem 2 MB.
 - Důvod: Funkční ověření administrační logiky bez backendu, připravené k mapování na Framer CMS/asset management.
 - Dopady: Upload je lokální pro konkrétní prohlížeč; pro produkci je nutné použít trvalé CMS úložiště.
+
+### 2026-10-05 Responzivní homepage hero
+
+- Kontext: Hero fotografie musí být vždy celá, bez ořezu a deformace.
+- Rozhodnutí: Na homepage použít běžný `<img>` s `width: 100%`, `height: auto` a `object-fit: contain`; na mobilu umístit text pod fotografii.
+- Důvod: Poměr stran zůstává zachovaný na všech běžných šířkách.
+- Dopady: Výška desktopového hero přirozeně vychází z poměru stran zdrojového obrázku; navazující sekce nemá negativní margin ani překrytí.
+
+### 2026-10-05 Zjednodušení kategorií a kontaktu na homepage
+
+- Rozhodnutí: Z kategorií odstranit ceny a ponechat pouze název, popis a větší obrázek. Kontaktní část tvoří jediný blok bez samostatného mapového panelu.
+- Důvod: Homepage má sloužit jako přehled kategorií; detail cen zůstává v ceníku. Kontakt má obsahovat pouze údaje a CTA na Google Maps.
+
+### 2026-10-05 Veřejná Půjčovna bez inventárních modelů
+
+- Kontext: Zákazník vybírá typ vybavení, nikoliv konkrétní značku nebo fyzický kus.
+- Rozhodnutí: Veřejná Půjčovna zobrazuje čtyři obecné kategorie a obecné příslušenství; konkrétní produkty zůstávají pouze v datové a administrační vrstvě.
+- Důvod: Kratší a srozumitelnější nabídka odpovídající skutečnému procesu poptávky.
+- Dopady: Cena kategorie se načítá z `prices`, fotografie a popis z `categories`; vše zůstává řaditelné a editovatelné v adminu.

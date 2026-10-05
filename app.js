@@ -138,10 +138,9 @@ function infoStrip() {
 function categoryCards() {
   return state.data.categories.filter(x => x.active && x.id !== 'prislusenstvi').map(category => {
     const product = state.data.products.find(p => p.category === category.id && p.active);
-    const price = state.data.prices.find(p => p.category === category.id && p.active)?.day ?? product?.price;
     return `<a href="#/pujcovna?filter=${category.id}" class="category-card">
-      <div><span class="category-icon">${svgIcon(category.icon)}</span><h3>${esc(category.name)}</h3><p>${esc(category.description)}</p>${price != null ? `<span class="category-price">od ${money(price)} / den</span>` : ''}</div>
-      ${product ? `<img src="${esc(product.image)}" alt="${esc(product.name)}">` : ''}
+      <div class="category-card-heading"><h3>${esc(category.name)}</h3><p>${esc(category.description)}</p></div>
+      ${(category.image || product?.image) ? `<img src="${esc(category.image || product.image)}" alt="${esc(category.name)}">` : ''}
     </a>`;
   }).join('');
 }
@@ -172,7 +171,7 @@ function tripCard(trip, featured = false) {
 function homePage() {
   const { pageText, brand, trips, gallery, contact, uiText } = state.data;
   return `<main id="main">
-    <section class="home-hero" style="--hero:url('${esc(brand.hero)}')"><div class="shell hero-content">
+    <section class="home-hero"><img class="home-hero-image" src="${esc(brand.hero)}" alt="Krajina pod Pálavou" fetchpriority="high"><div class="shell hero-content">
       <p class="eyebrow">Na kolech za krásami jižní Moravy</p><h1>${esc(pageText.homeTitle)}</h1><p>${esc(pageText.homeLead)}</p>
       <div class="hero-actions"><a class="button primary" href="#/poptavka">${esc(uiText.inquiryCta)}${svgIcon('arrow')}</a><a class="button secondary" href="${telHref(contact.phones[0])}">${svgIcon('phone')}${esc(uiText.callCta)}</a></div>
     </div></section>
@@ -189,16 +188,18 @@ function homePage() {
 }
 
 function rentalPage() {
-  const { pageText, categories, products, accessories } = state.data;
-  const tabs = [{ id: 'vse', name: 'Vše' }, ...categories.filter(c => c.active)].map(c => `<button class="filter-button ${state.rentalFilter === c.id ? 'active' : ''}" data-rental-filter="${c.id}">${esc(c.name)}</button>`).join('');
-  const filtered = products.filter(p => p.active && (state.rentalFilter === 'vse' || p.category === state.rentalFilter));
-  const showAccessories = state.rentalFilter === 'vse' || state.rentalFilter === 'prislusenstvi';
+  const { pageText, categories, accessories, prices } = state.data;
+  const rentalCategories = categories.filter(category => category.active && ['kola','elektrokola','detska-kola','kolobezky'].includes(category.id));
+  const categoryOffers = rentalCategories.map(category => {
+    const price = prices.find(item => item.active && item.category === category.id)?.day;
+    return `<article class="category-card rental-category-card"><div class="category-card-heading"><h3>${esc(category.name)}</h3><p>${esc(category.description)}</p></div>${category.image ? `<img src="${esc(category.image)}" alt="${esc(category.name)}" loading="lazy">` : ''}${price != null ? `<div class="category-price"><span>od</span><strong>${money(price)}</strong><small>/ den</small></div>` : ''}</article>`;
+  }).join('');
   return `<main id="main">${pageHero(pageText.rentalTitle, pageText.rentalLead, 'Katalog půjčovny')}
-    <section class="shell section"><div class="filters" aria-label="Filtr katalogu">${tabs}</div>
-      <div class="product-grid">${filtered.length ? filtered.map(p => productCard(p)).join('') : (showAccessories ? '' : emptyState('V této kategorii momentálně není aktivní položka.'))}</div>
-      ${showAccessories ? `<div class="section-heading subheading"><h2>Příslušenství</h2></div><div class="accessory-grid">${accessories.filter(a => a.active).map(accessoryCard).join('')}</div>` : ''}
+    <section class="shell section rental-offer"><div class="section-heading"><div><p class="eyebrow">Vyberte si vybavení</p><h2>Naše nabídka</h2></div></div>
+      <div class="rental-category-grid">${categoryOffers}</div>
+      <div class="section-heading subheading"><h2>Příslušenství</h2></div><div class="accessory-grid">${accessories.filter(a => a.active).map(accessoryCard).join('')}</div>
     </section>
-    <section class="shell">${infoStrip()}</section>${ctaBand('Připraveni vyrazit?', 'Vyplňte nezávaznou poptávku a my ověříme dostupnost.')}
+    <section class="shell">${infoStrip()}</section>${ctaBand('Připraveni vyrazit?', 'Vyplňte nezávaznou poptávku a my ověříme dostupnost.', 'Poptat kola')}
   </main>`;
 }
 
@@ -258,7 +259,7 @@ function contactPage() {
 
 function contactBand() {
   const { contact, uiText } = state.data;
-  return `<section class="shell contact-band"><div><p class="eyebrow">Kontaktujte nás</p><h2>${esc(contact.address)}</h2><a href="${telHref(contact.phones[0])}">${svgIcon('phone')}${esc(contact.phones[0])}</a><a href="mailto:${esc(contact.email)}">${svgIcon('mail')}${esc(contact.email)}</a><a class="button light" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div><div class="map-visual"><span>Novomlýnské nádrže</span><b>${svgIcon('pin')}Šakvice</b><small>Pálava</small></div></section>`;
+  return `<section class="shell contact-band"><div><p class="eyebrow">Kontaktujte nás</p><h2>${esc(contact.address)}</h2>${contact.phones.map(phone => `<a href="${telHref(phone)}">${svgIcon('phone')}${esc(phone)}</a>`).join('')}<a href="mailto:${esc(contact.email)}">${svgIcon('mail')}${esc(contact.email)}</a><a class="button light" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div></section>`;
 }
 
 function ctaBand(title, text, label = state.data.uiText.defaultInquiryCta, href = '#/poptavka') {
@@ -314,7 +315,7 @@ function adminContent() {
   const uiFields = Object.entries(state.data.uiText).map(([key, value]) => adminField(`uiText.${key}`, key, value)).join('');
   const contactContentFields = Object.entries(state.data.contactContent).map(([key, value]) => adminField(`contactContent.${key}`, key, value)).join('');
   const brandFields = ['slogan','hero'].map(key => adminField(`brand.${key}`, key, state.data.brand[key])).join('');
-  return `<div class="admin-settings"><section class="panel"><h2>Texty stránek</h2>${textFields}</section><section class="panel"><h2>Texty rozhraní a CTA</h2>${uiFields}</section><section class="panel"><h2>Texty kontaktu</h2>${contactContentFields}</section><section class="panel"><h2>Hero a vizuální obsah</h2>${brandFields}</section><section class="panel categories-admin"><h2>Kategorie</h2>${adminCollection('categories', ['name','description','icon','active'])}</section><section class="panel categories-admin"><h2>Výhody půjčovny</h2>${adminCollection('benefits', ['title','text','icon','active'])}</section><section class="panel categories-admin"><h2>Co je v ceně</h2>${adminCollection('included', ['text','icon','active'])}</section></div>`;
+  return `<div class="admin-settings"><section class="panel"><h2>Texty stránek</h2>${textFields}</section><section class="panel"><h2>Texty rozhraní a CTA</h2>${uiFields}</section><section class="panel"><h2>Texty kontaktu</h2>${contactContentFields}</section><section class="panel"><h2>Hero a vizuální obsah</h2>${brandFields}</section><section class="panel categories-admin"><h2>Kategorie</h2>${adminCollection('categories', ['name','description','image','icon','active'])}</section><section class="panel categories-admin"><h2>Výhody půjčovny</h2>${adminCollection('benefits', ['title','text','icon','active'])}</section><section class="panel categories-admin"><h2>Co je v ceně</h2>${adminCollection('included', ['text','icon','active'])}</section></div>`;
 }
 
 function adminCollection(name, fields) {
@@ -525,7 +526,7 @@ function addItem(collection) {
     delivery: { id, place: 'Nové místo', price: 'individuálně', active: false },
     trips: { id, name: 'Nový výlet', category: 'lehke', description: 'Doplňte krátký popis.', longDescription: 'Doplňte delší popis trasy.', distance: 'k ověření', time: 'k ověření', difficulty: 'Lehká', roadRatio: 'Doplňte poměr povrchů', mapyUrl: '', active: false, image: '' },
     gallery: { id, category: 'okoli', caption: 'Nová fotografie', image: '', active: false },
-    categories: { id, name: 'Nová kategorie', icon: 'bike', description: 'Doplňte popis.', active: false },
+    categories: { id, name: 'Nová kategorie', icon: 'bike', description: 'Doplňte popis.', image: '', active: false },
     benefits: { id, icon: 'bike', title: 'Nová výhoda', text: 'Doplňte text.', active: false },
     included: { id, icon: 'shield', text: 'Nová položka v ceně', active: false }
   };

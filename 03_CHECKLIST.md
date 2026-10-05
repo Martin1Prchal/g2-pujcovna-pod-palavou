@@ -30,3 +30,8 @@
 - [x] Admin umí vytvářet, řadit, skrývat a mazat výlety
 - [x] Produkty, výlety, galerie a hero podporují upload obrázku ze zařízení
 - [x] Google Maps CTA je dostupné na homepage i Kontakt
+- [x] Homepage hero používá celý nedeformovaný `<img>` bez překrytí navazující sekcí
+- [x] Homepage kategorie zobrazují pouze název, popis a zvětšený obrázek bez ceny
+- [x] Spodní kontakt je jeden blok bez samostatného mapového panelu
+- [x] Půjčovna veřejně zobrazuje pouze 4 obecné kategorie, ne jednotlivé modely
+- [x] Kategorie Půjčovny používají ceny z centrálního ceníku a editovatelné fotografie

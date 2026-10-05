@@ -1,13 +1,13 @@
 # Status
 
-- Aktuální fáze: sjednocený G2 prototyp nasazený na GitHub Pages
-- Naposledy aktualizováno: 2026-10-02
+- Aktuální fáze: lokální úpravy homepage před dalším schváleným nasazením
+- Naposledy aktualizováno: 2026-10-05
 
 ## Hotovo
-Sedm veřejných stránek, jednotný sans-serif design systém, responzivní rozhraní, SVG ikony, filtrování, poptávkový formulář, centrální datová vrstva a přepracovaný Prototype Admin. Výletový model obsahuje Mapy.cz GPS URL, delší popis a poměr povrchů. Obrázky lze v adminu nahrát ze zařízení.
+Sedm veřejných stránek, jednotný sans-serif design systém, responzivní rozhraní, SVG ikony, poptávkový formulář, centrální datová vrstva a přepracovaný Prototype Admin. Homepage má celý responzivní hero obrázek bez překrytí, kategorie bez cen se zvětšenými obrázky, zesílenou galerii a jeden sjednocený kontaktní blok bez mapového panelu. Veřejná Půjčovna nově nabízí pouze čtyři obecné kategorie a obecné příslušenství bez inventárních modelů.
 
 ## Rozpracováno
-Uživatelské obsahové ověření a případné upřesnění tras.
+Uživatelské vizuální schválení lokální homepage a případné upřesnění tras.
 
 ## Následuje
 Potvrzení reálných parametrů tras provozovatelem a pozdější mapování dat do Framer CMS.

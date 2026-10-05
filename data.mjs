@@ -76,10 +76,10 @@ export const initialData = {
     handoverText: 'Vybavení se předává v provozovně, případně po předchozí domluvě doveze.'
   },
   categories: [
-    { id: 'kola', name: 'Kola', icon: 'bike', description: 'Spolehlivá kola pro výlety po okolí', active: true },
-    { id: 'elektrokola', name: 'Elektrokola', icon: 'bolt', description: 'Delší trasy s lehkostí', active: true },
-    { id: 'detska-kola', name: 'Dětská kola', icon: 'child', description: 'Pro malé cyklisty', active: true },
-    { id: 'kolobezky', name: 'Koloběžky', icon: 'scooter', description: 'Zábava pro děti i dospělé', active: true },
+    { id: 'kola', name: 'Kola', icon: 'bike', description: 'Spolehlivá kola pro výlety po okolí', active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001496-d0ba9d0bac/Author%20Classic%202022.webp?ph=a6234f4d0c' },
+    { id: 'elektrokola', name: 'Elektrokola', icon: 'bolt', description: 'Delší trasy s lehkostí', active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001563-e4c22e4c24/pells-thorr-2-er.jpeg?ph=a6234f4d0c' },
+    { id: 'detska-kola', name: 'Dětská kola', icon: 'child', description: 'Pro malé cyklisty', active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001498-8d8398d83a/Author%20Integra%202022.webp?ph=a6234f4d0c' },
+    { id: 'kolobezky', name: 'Koloběžky', icon: 'scooter', description: 'Zábava pro děti i dospělé', active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001115-7e6667e686/kolobezka-kostka-tour-max-g6%20%282%29.jpg?ph=a6234f4d0c' },
     { id: 'prislusenstvi', name: 'Příslušenství', icon: 'shield', description: 'Vše potřebné na cestu', active: true }
   ],
   products: [

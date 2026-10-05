@@ -51,7 +51,17 @@ test('admin podporuje upload fotografií a editaci obsahu bez kódu', () => {
 test('homepage prezentuje kategorie a nevrací vybrané modely', () => {
   assert.equal(initialData.uiText.homeCategoriesTitle, 'Kola pro každý výlet');
   assert.doesNotMatch(app, /Vybraná kola z půjčovny/);
-  assert.match(app, /category-price/);
+  assert.doesNotMatch(app.match(/function categoryCards\(\)[\s\S]*?function productCard/)?.[0] || '', /category-price|money\(/);
+  assert.match(app, /class="home-hero-image"/);
+  assert.doesNotMatch(app.match(/function contactBand\(\)[\s\S]*?function ctaBand/)?.[0] || '', /map-visual/);
+});
+
+test('půjčovna zobrazuje obecné kategorie místo jednotlivých modelů', () => {
+  const rental = app.match(/function rentalPage\(\)[\s\S]*?function accessoryCard/)?.[0] || '';
+  assert.match(rental, /rental-category-grid/);
+  assert.match(rental, /prices\.find/);
+  assert.doesNotMatch(rental, /productCard\(/);
+  assert.ok(initialData.categories.filter(item => ['kola','elektrokola','detska-kola','kolobezky'].includes(item.id)).every(item => item.image));
 });
 
 test('ve viditelném UI nejsou emoji ikony', () => {
