@@ -131,6 +131,12 @@ function pageHero(title, lead, eyebrow = '') {
   </section>`;
 }
 
+function googleMapEmbed() {
+  const address = state.data.contact.address;
+  const src = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  return `<div class="map-embed"><iframe src="${esc(src)}" title="Mapa – ${esc(address)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`;
+}
+
 function infoStrip() {
   return `<div class="info-strip">${state.data.benefits.filter(item => item.active).map(item => `<div>${svgIcon(item.icon)}<span><b>${esc(item.title)}</b><small>${esc(item.text)}</small></span></div>`).join('')}</div>`;
 }
@@ -181,7 +187,7 @@ function homePage() {
       <div class="trip-grid">${trips.filter(x => x.active).slice(0, 3).map(x => tripCard(x)).join('')}</div>
     </section>
     <section class="shell section"><div class="section-heading"><div><p class="eyebrow">Z jižní Moravy</p><h2>${esc(uiText.galleryTitle)}</h2></div><a href="#/galerie">${esc(uiText.galleryCta)}${svgIcon('arrow')}</a></div>
-      <div class="gallery-preview">${gallery.filter(x => x.active).slice(0, 6).map(x => `<img src="${esc(x.image)}" alt="${esc(x.caption)}" loading="lazy">`).join('')}</div>
+      <div class="gallery-preview">${gallery.filter(x => x.active).slice(0, 6).map((x, i) => `<img src="${esc(x.image)}" alt="${esc(x.caption)}" loading="lazy" data-lightbox-index="${i}" tabindex="0" role="button" aria-label="Otevřít fotografii: ${esc(x.caption)}">`).join('')}</div>
     </section>
     ${contactBand()}
   </main>`;
@@ -241,7 +247,7 @@ function galleryPage() {
   const filtered = gallery.filter(g => g.active && (state.galleryFilter === 'vse' || g.category === state.galleryFilter));
   return `<main id="main">${pageHero(pageText.galleryTitle, pageText.galleryLead)}<section class="shell section">
     <div class="filters">${cats.map(([id, name]) => `<button class="filter-button ${state.galleryFilter === id ? 'active' : ''}" data-gallery-filter="${id}">${name}</button>`).join('')}</div>
-    <div class="gallery-grid">${filtered.length ? filtered.map((g, i) => `<figure class="gallery-item item-${i % 5}"><img src="${esc(g.image)}" alt="${esc(g.caption)}" loading="lazy"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('') : emptyState('V této kategorii nejsou fotografie.')}</div>
+    <div class="gallery-grid">${filtered.length ? filtered.map((g, i) => `<figure class="gallery-item item-${i % 5}" data-lightbox-index="${i}" tabindex="0" role="button" aria-label="Otevřít fotografii: ${esc(g.caption)}"><img src="${esc(g.image)}" alt="${esc(g.caption)}" loading="lazy"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('') : emptyState('V této kategorii nejsou fotografie.')}</div>
     </section>${ctaBand('Naplánujte si vlastní výlet pod Pálavou', 'Půjčte si kolo a objevte jižní Moravu vlastním tempem.')}</main>`;
 }
 
@@ -251,7 +257,7 @@ function contactPage() {
     <article class="panel contact-card"><span class="round-icon">${svgIcon('pin')}</span><h2>${esc(contactContent.detailsTitle)}</h2><p>${esc(contact.address)}</p>${contact.phones.map(p => `<a href="${telHref(p)}">${svgIcon('phone')}${esc(p)}</a>`).join('')}<a href="mailto:${esc(contact.email)}">${svgIcon('mail')}${esc(contact.email)}</a></article>
     <article class="panel contact-card"><span class="round-icon olive">${svgIcon('clock')}</span><h2>${esc(contactContent.openingTitle)}</h2><h3>${esc(contact.openingTitle)}</h3><p>${esc(contact.openingHours)}</p><hr><p>${esc(contact.openingNote)}</p></article>
     <article class="panel contact-card"><span class="round-icon">${svgIcon('mail')}</span><h2>${esc(contactContent.inquiryTitle)}</h2><p>${esc(contactContent.inquiryText)}</p><a class="button primary" href="#/poptavka">${esc(uiText.fillInquiryCta)}</a><a class="button secondary" href="mailto:${esc(contact.email)}">${esc(uiText.emailCta)}</a></article>
-    <article class="panel map-card"><div><p class="eyebrow">Kde nás najdete</p><h2>${esc(contactContent.locationTitle)}</h2><p>${esc(contact.address)}</p><a class="button primary" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div><div class="map-visual"><span>Novomlýnské nádrže</span><b>${svgIcon('pin')}Šakvice</b><small>Pálava</small></div></article>
+    <article class="panel map-card"><div><p class="eyebrow">Kde nás najdete</p><h2>${esc(contactContent.locationTitle)}</h2><p>${esc(contact.address)}</p><a class="button primary" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div>${googleMapEmbed()}</article>
     <article class="panel arrival-card"><h2>${esc(contactContent.arrivalTitle)}</h2><div><b>${svgIcon('car')}${esc(contactContent.carTitle)}</b><p>${esc(contactContent.carText)}</p></div><div><b>${svgIcon('bike')}${esc(contactContent.handoverTitle)}</b><p>${esc(contactContent.handoverText)}</p></div></article>
     <article class="panel message-card"><h2>Napište nám</h2><form id="contact-form"><label>Jméno a příjmení *<input required name="name" autocomplete="name"></label><label>E-mail *<input required type="email" name="email" autocomplete="email"></label><label class="wide">Vaše zpráva *<textarea required name="message" rows="4"></textarea></label><button class="button primary" type="submit">Odeslat zprávu</button></form><p class="form-note">V prototypu se zpráva neodesílá mimo zařízení.</p></article>
     </section></main>`;
@@ -259,7 +265,7 @@ function contactPage() {
 
 function contactBand() {
   const { contact, uiText } = state.data;
-  return `<section class="shell contact-band"><div><p class="eyebrow">Kontaktujte nás</p><h2>${esc(contact.address)}</h2>${contact.phones.map(phone => `<a href="${telHref(phone)}">${svgIcon('phone')}${esc(phone)}</a>`).join('')}<a href="mailto:${esc(contact.email)}">${svgIcon('mail')}${esc(contact.email)}</a><a class="button light" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div></section>`;
+  return `<section class="shell contact-band"><div><p class="eyebrow">Kontaktujte nás</p><h2>${esc(contact.address)}</h2>${contact.phones.map(phone => `<a href="${telHref(phone)}">${svgIcon('phone')}${esc(phone)}</a>`).join('')}<a href="mailto:${esc(contact.email)}">${svgIcon('mail')}${esc(contact.email)}</a><a class="button light" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div>${googleMapEmbed()}</section>`;
 }
 
 function ctaBand(title, text, label = state.data.uiText.defaultInquiryCta, href = '#/poptavka') {
@@ -350,9 +356,19 @@ function getPath(object, path) {
   return path.split('.').reduce((target, key) => target?.[key], object);
 }
 
-function appShell(content) { return `${state.route === 'admin' ? '' : header()}${content}${state.route === 'admin' ? '' : footer()}`; }
+function lightbox() {
+  return `<div class="lightbox hidden" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Náhled fotografie" tabindex="-1">
+    <button class="lightbox-close" type="button" aria-label="Zavřít náhled">&times;</button>
+    <button class="lightbox-nav lightbox-prev" type="button" aria-label="Předchozí fotografie">&#10094;</button>
+    <figure class="lightbox-content"><img alt=""><figcaption></figcaption></figure>
+    <button class="lightbox-nav lightbox-next" type="button" aria-label="Další fotografie">&#10095;</button>
+  </div>`;
+}
+
+function appShell(content) { return `${state.route === 'admin' ? '' : header()}${content}${state.route === 'admin' ? '' : `${footer()}${lightbox()}`}`; }
 
 function render() {
+  document.body.classList.remove('lightbox-open');
   state.route = currentRoute();
   const params = new URLSearchParams(location.hash.split('?')[1] || '');
   if (state.route === 'pujcovna' && params.get('filter')) state.rentalFilter = params.get('filter');
@@ -373,9 +389,67 @@ function bindEvents() {
   $$('[data-rental-filter]').forEach(b => b.addEventListener('click', () => { state.rentalFilter = b.dataset.rentalFilter; render(); }));
   $$('[data-trip-filter]').forEach(b => b.addEventListener('click', () => { state.tripFilter = b.dataset.tripFilter; render(); }));
   $$('[data-gallery-filter]').forEach(b => b.addEventListener('click', () => { state.galleryFilter = b.dataset.galleryFilter; render(); }));
+  bindLightbox();
   $('#contact-form')?.addEventListener('submit', event => { event.preventDefault(); event.currentTarget.reset(); toast('Zpráva je připravena. V prototypu se neodesílá.'); });
   bindInquiry();
   bindAdmin();
+}
+
+function bindLightbox() {
+  const modal = $('#gallery-lightbox');
+  const triggers = $$('[data-lightbox-index]');
+  if (!modal || !triggers.length) return;
+
+  const image = $('.lightbox-content img', modal);
+  const caption = $('.lightbox-content figcaption', modal);
+  const previous = $('.lightbox-prev', modal);
+  const next = $('.lightbox-next', modal);
+  const closeButton = $('.lightbox-close', modal);
+  let currentIndex = 0;
+  let opener = null;
+
+  const showImage = index => {
+    currentIndex = (index + triggers.length) % triggers.length;
+    const trigger = triggers[currentIndex];
+    const source = trigger.matches('img') ? trigger : $('img', trigger);
+    image.src = source.src;
+    image.alt = source.alt;
+    caption.textContent = source.alt;
+  };
+  const open = (index, trigger) => {
+    opener = trigger;
+    showImage(index);
+    modal.classList.remove('hidden');
+    document.body.classList.add('lightbox-open');
+    closeButton.focus();
+  };
+  const close = () => {
+    modal.classList.add('hidden');
+    document.body.classList.remove('lightbox-open');
+    image.removeAttribute('src');
+    opener?.focus();
+  };
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener('click', () => open(index, trigger));
+    trigger.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open(index, trigger);
+      }
+    });
+  });
+  closeButton.addEventListener('click', close);
+  previous.addEventListener('click', () => showImage(currentIndex - 1));
+  next.addEventListener('click', () => showImage(currentIndex + 1));
+  modal.addEventListener('click', event => {
+    if (!event.target.closest('.lightbox-content img, .lightbox-close, .lightbox-nav')) close();
+  });
+  modal.addEventListener('keydown', event => {
+    if (event.key === 'Escape') close();
+    if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+  });
 }
 
 function bindInquiry() {

@@ -29,9 +29,10 @@
 - [x] Výlet obsahuje editovatelnou Mapy.cz GPS URL a veřejné CTA
 - [x] Admin umí vytvářet, řadit, skrývat a mazat výlety
 - [x] Produkty, výlety, galerie a hero podporují upload obrázku ze zařízení
-- [x] Google Maps CTA je dostupné na homepage i Kontakt
+- [x] Responzivní Google Maps iframe a CTA jsou dostupné na homepage i Kontakt
 - [x] Homepage hero používá celý nedeformovaný `<img>` bez překrytí navazující sekcí
 - [x] Homepage kategorie zobrazují pouze název, popis a zvětšený obrázek bez ceny
-- [x] Spodní kontakt je jeden blok bez samostatného mapového panelu
+- [x] Spodní kontakt je jeden blok s vloženou Google mapou
 - [x] Půjčovna veřejně zobrazuje pouze 4 obecné kategorie, ne jednotlivé modely
 - [x] Kategorie Půjčovny používají ceny z centrálního ceníku a editovatelné fotografie
+- [x] Obrázky galerie se otevírají v responzivním lightboxu s klávesovým ovládáním

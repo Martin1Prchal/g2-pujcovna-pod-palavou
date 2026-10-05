@@ -53,7 +53,25 @@ test('homepage prezentuje kategorie a nevrací vybrané modely', () => {
   assert.doesNotMatch(app, /Vybraná kola z půjčovny/);
   assert.doesNotMatch(app.match(/function categoryCards\(\)[\s\S]*?function productCard/)?.[0] || '', /category-price|money\(/);
   assert.match(app, /class="home-hero-image"/);
-  assert.doesNotMatch(app.match(/function contactBand\(\)[\s\S]*?function ctaBand/)?.[0] || '', /map-visual/);
+  assert.match(app.match(/function contactBand\(\)[\s\S]*?function ctaBand/)?.[0] || '', /googleMapEmbed\(\)/);
+});
+
+test('homepage a kontakt používají responzivní Google Maps embed', () => {
+  assert.match(app, /https:\/\/www\.google\.com\/maps\?q=/);
+  assert.match(app, /output=embed/);
+  assert.equal((app.match(/googleMapEmbed\(\)/g) || []).length, 3);
+  assert.match(app, /loading="lazy"/);
+  assert.match(css, /\.map-embed iframe[^}]*width:\s*100%[^}]*height:\s*100%/);
+});
+
+test('galerie otevírá obrázky v ovladatelném lightboxu', () => {
+  assert.match(app, /id="gallery-lightbox"/);
+  assert.match(app, /data-lightbox-index/);
+  assert.match(app, /event\.key === 'Escape'/);
+  assert.match(app, /event\.key === 'ArrowLeft'/);
+  assert.match(app, /event\.key === 'ArrowRight'/);
+  assert.match(css, /\.lightbox\s*\{[^}]*position:\s*fixed[^}]*inset:\s*0/);
+  assert.match(css, /\.lightbox-content img\s*\{[^}]*object-fit:\s*contain/);
 });
 
 test('půjčovna zobrazuje obecné kategorie místo jednotlivých modelů', () => {
