@@ -36,3 +36,5 @@
 - [x] Půjčovna veřejně zobrazuje pouze 4 obecné kategorie, ne jednotlivé modely
 - [x] Kategorie Půjčovny používají ceny z centrálního ceníku a editovatelné fotografie
 - [x] Obrázky galerie se otevírají v responzivním lightboxu s klávesovým ovládáním
+- [x] Kategorie na homepage vedou bez query parametrů na Půjčovnu
+- [x] Veřejné označení prototypu a dokumentační odkazy na nepoužívaný hosting jsou odstraněné

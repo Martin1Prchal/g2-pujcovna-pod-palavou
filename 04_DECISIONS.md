@@ -23,13 +23,6 @@
 - Důvod: Nevydávat neověřené údaje za skutečnost.
 - Dopady: Před produkčním převodem je třeba trasy a ceny znovu potvrdit provozovatelem.
 
-### 2026-10-02 Trvalý Netlify site pro prototyp
-
-- Kontext: Uživatel požadoval samostatný produkční Netlify site bez zásahu do existujícího ostrého webu.
-- Rozhodnutí: Nasadit statický build do site `pujcovna-pod-palavou` v týmu `prchalmartin2` a zachovat konfiguraci v `netlify.toml`.
-- Důvod: Stabilní veřejná URL a možnost dalších production deploymentů stejného lokálně propojeného projektu.
-- Dopady: Vlastní doména není připojena; ostrý web zůstává beze změny.
-
 ### 2026-10-02 Jednotný design systém a lineární SVG ikony
 
 - Kontext: Veřejné stránky používaly smíšenou typografii a emoji ikony.

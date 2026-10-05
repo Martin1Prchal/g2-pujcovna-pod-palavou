@@ -9,6 +9,9 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+const docs = ['00_PROJECT_INDEX.md', '04_DECISIONS.md', '07_HANDOFF.md', 'README.md']
+  .map(file => fs.readFileSync(path.join(root, file), 'utf8'))
+  .join('\n');
 
 test('sedm veřejných stránek je v routeru', () => {
   for (const route of ['home','pujcovna','cenik','vylety','galerie','kontakt','poptavka']) {
@@ -53,7 +56,15 @@ test('homepage prezentuje kategorie a nevrací vybrané modely', () => {
   assert.doesNotMatch(app, /Vybraná kola z půjčovny/);
   assert.doesNotMatch(app.match(/function categoryCards\(\)[\s\S]*?function productCard/)?.[0] || '', /category-price|money\(/);
   assert.match(app, /class="home-hero-image"/);
+  assert.match(app.match(/function categoryCards\(\)[\s\S]*?function productCard/)?.[0] || '', /href="#\/pujcovna"/);
+  assert.doesNotMatch(app.match(/function categoryCards\(\)[\s\S]*?function productCard/)?.[0] || '', /\?filter=/);
   assert.match(app.match(/function contactBand\(\)[\s\S]*?function ctaBand/)?.[0] || '', /googleMapEmbed\(\)/);
+});
+
+test('veřejný web neobsahuje označení prototypu a dokumentace nezmiňuje Netlify', () => {
+  assert.doesNotMatch(app, /G2 funkční prototyp|Prototype admin|V prototypu/i);
+  assert.doesNotMatch(html.match(/<meta name="description"[^>]+>/)?.[0] || '', /prototyp/i);
+  assert.doesNotMatch(docs, /netlify/i);
 });
 
 test('homepage a kontakt používají responzivní Google Maps embed', () => {

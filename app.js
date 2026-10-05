@@ -117,7 +117,7 @@ function footer() {
       <div class="footer-social"><a href="${telHref(contact.phones[0])}">${svgIcon('phone')} ${esc(contact.phones[0])}</a><a href="mailto:${esc(contact.email)}">${svgIcon('mail')} E-mail</a></div>
       <a class="admin-link" href="#/admin" aria-label="Přihlášení správce">${svgIcon('lock')} Přihlášení správce</a>
     </div>
-    <div class="shell footer-note">© 2026 ${esc(brand.name)} · G2 funkční prototyp</div>
+    <div class="shell footer-note">© 2026 ${esc(brand.name)}</div>
   </footer>`;
 }
 
@@ -144,7 +144,7 @@ function infoStrip() {
 function categoryCards() {
   return state.data.categories.filter(x => x.active && x.id !== 'prislusenstvi').map(category => {
     const product = state.data.products.find(p => p.category === category.id && p.active);
-    return `<a href="#/pujcovna?filter=${category.id}" class="category-card">
+    return `<a href="#/pujcovna" class="category-card">
       <div class="category-card-heading"><h3>${esc(category.name)}</h3><p>${esc(category.description)}</p></div>
       ${(category.image || product?.image) ? `<img src="${esc(category.image || product.image)}" alt="${esc(category.name)}">` : ''}
     </a>`;
@@ -259,7 +259,7 @@ function contactPage() {
     <article class="panel contact-card"><span class="round-icon">${svgIcon('mail')}</span><h2>${esc(contactContent.inquiryTitle)}</h2><p>${esc(contactContent.inquiryText)}</p><a class="button primary" href="#/poptavka">${esc(uiText.fillInquiryCta)}</a><a class="button secondary" href="mailto:${esc(contact.email)}">${esc(uiText.emailCta)}</a></article>
     <article class="panel map-card"><div><p class="eyebrow">Kde nás najdete</p><h2>${esc(contactContent.locationTitle)}</h2><p>${esc(contact.address)}</p><a class="button primary" href="${esc(contact.mapUrl)}" target="_blank" rel="noopener noreferrer">${svgIcon('pin')}${esc(uiText.googleMapsCta)}${svgIcon('arrow')}</a></div>${googleMapEmbed()}</article>
     <article class="panel arrival-card"><h2>${esc(contactContent.arrivalTitle)}</h2><div><b>${svgIcon('car')}${esc(contactContent.carTitle)}</b><p>${esc(contactContent.carText)}</p></div><div><b>${svgIcon('bike')}${esc(contactContent.handoverTitle)}</b><p>${esc(contactContent.handoverText)}</p></div></article>
-    <article class="panel message-card"><h2>Napište nám</h2><form id="contact-form"><label>Jméno a příjmení *<input required name="name" autocomplete="name"></label><label>E-mail *<input required type="email" name="email" autocomplete="email"></label><label class="wide">Vaše zpráva *<textarea required name="message" rows="4"></textarea></label><button class="button primary" type="submit">Odeslat zprávu</button></form><p class="form-note">V prototypu se zpráva neodesílá mimo zařízení.</p></article>
+    <article class="panel message-card"><h2>Napište nám</h2><form id="contact-form"><label>Jméno a příjmení *<input required name="name" autocomplete="name"></label><label>E-mail *<input required type="email" name="email" autocomplete="email"></label><label class="wide">Vaše zpráva *<textarea required name="message" rows="4"></textarea></label><button class="button primary" type="submit">Odeslat zprávu</button></form><p class="form-note">Zpráva se neodesílá mimo toto zařízení.</p></article>
     </section></main>`;
 }
 
@@ -300,9 +300,9 @@ function quantityControl(name, label, icon) {
 }
 
 function adminPage() {
-  if (!state.adminAuth) return `<main id="main" class="admin-login"><section class="panel"><p class="eyebrow">Prototype admin</p><h1>Přihlášení správce</h1><p>Lokální demonstrace oddělená od budoucího Framer CMS.</p><form id="admin-login"><label>Demo heslo<input type="password" name="password" required placeholder="palava"></label><button class="button primary" type="submit">Přihlásit</button></form><small>Pro prototyp použijte heslo <b>palava</b>. Nejde o produkční zabezpečení.</small><a href="#/home">← Zpět na web</a></section></main>`;
+  if (!state.adminAuth) return `<main id="main" class="admin-login"><section class="panel"><p class="eyebrow">Lokální administrace</p><h1>Přihlášení správce</h1><p>Lokální správa obsahu oddělená od budoucího Framer CMS.</p><form id="admin-login"><label>Demo heslo<input type="password" name="password" required placeholder="palava"></label><button class="button primary" type="submit">Přihlásit</button></form><small>Použijte heslo <b>palava</b>. Nejde o produkční zabezpečení.</small><a href="#/home">← Zpět na web</a></section></main>`;
   const tabs = [['products','Produkty'],['accessories','Příslušenství'],['prices','Ceník'],['trips','Výlety'],['gallery','Galerie'],['content','Obsah webu'],['contact','Kontakty']];
-  return `<main id="main" class="admin-shell"><div class="admin-header"><div><p class="eyebrow">Prototype admin</p><h1>Správa obsahu</h1><p>Změny jsou pouze lokální v tomto prohlížeči.</p></div><div><button class="button secondary" id="export-data">Export JSON</button><button class="button secondary" id="reset-data">Obnovit výchozí data</button><button class="button ghost" id="admin-logout">Odhlásit</button></div></div>
+  return `<main id="main" class="admin-shell"><div class="admin-header"><div><p class="eyebrow">Lokální administrace</p><h1>Správa obsahu</h1><p>Změny jsou pouze lokální v tomto prohlížeči.</p></div><div><button class="button secondary" id="export-data">Export JSON</button><button class="button secondary" id="reset-data">Obnovit výchozí data</button><button class="button ghost" id="admin-logout">Odhlásit</button></div></div>
     <nav class="admin-tabs">${tabs.map(([id, label]) => `<button class="${state.adminTab === id ? 'active' : ''}" data-admin-tab="${id}">${label}</button>`).join('')}</nav>
     <section class="admin-content">${adminContent()}</section></main>`;
 }
@@ -349,7 +349,7 @@ function adminField(path, label, value) {
 
 function imageAdminField(path, label, value) {
   const isUploaded = String(value || '').startsWith('data:image/');
-  return `<div class="image-admin-field"><span>${esc(label)}</span><div class="image-admin-row">${value ? `<img src="${esc(value)}" alt="Náhled ${esc(label)}">` : `<div class="image-placeholder">${svgIcon('image')}<small>Bez fotografie</small></div>`}<div><label class="upload-button">${svgIcon('upload')}Nahrát ze zařízení<input type="file" accept="image/png,image/jpeg,image/webp,image/gif" data-image-upload="${path}"></label><label>URL obrázku<input type="url" data-path="${path}" value="${isUploaded ? '' : esc(value || '')}" placeholder="https://..."></label><small>${isUploaded ? 'Fotografie je uložená lokálně v prototypu.' : 'Lze nahrát soubor nebo použít URL.'}</small></div></div></div>`;
+  return `<div class="image-admin-field"><span>${esc(label)}</span><div class="image-admin-row">${value ? `<img src="${esc(value)}" alt="Náhled ${esc(label)}">` : `<div class="image-placeholder">${svgIcon('image')}<small>Bez fotografie</small></div>`}<div><label class="upload-button">${svgIcon('upload')}Nahrát ze zařízení<input type="file" accept="image/png,image/jpeg,image/webp,image/gif" data-image-upload="${path}"></label><label>URL obrázku<input type="url" data-path="${path}" value="${isUploaded ? '' : esc(value || '')}" placeholder="https://..."></label><small>${isUploaded ? 'Fotografie je uložená lokálně v tomto prohlížeči.' : 'Lze nahrát soubor nebo použít URL.'}</small></div></div></div>`;
 }
 
 function getPath(object, path) {
@@ -374,7 +374,7 @@ function render() {
   if (state.route === 'pujcovna' && params.get('filter')) state.rentalFilter = params.get('filter');
   const pages = { home: homePage, pujcovna: rentalPage, cenik: pricingPage, vylety: tripsPage, galerie: galleryPage, kontakt: contactPage, poptavka: inquiryPage, admin: adminPage };
   $('#app').innerHTML = appShell(pages[state.route]());
-  document.title = `${routes.find(([id]) => id === state.route)?.[1] || 'Prototype admin'} · ${state.data.brand.shortName}`;
+  document.title = `${routes.find(([id]) => id === state.route)?.[1] || 'Administrace'} · ${state.data.brand.shortName}`;
   bindEvents();
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
@@ -390,7 +390,7 @@ function bindEvents() {
   $$('[data-trip-filter]').forEach(b => b.addEventListener('click', () => { state.tripFilter = b.dataset.tripFilter; render(); }));
   $$('[data-gallery-filter]').forEach(b => b.addEventListener('click', () => { state.galleryFilter = b.dataset.galleryFilter; render(); }));
   bindLightbox();
-  $('#contact-form')?.addEventListener('submit', event => { event.preventDefault(); event.currentTarget.reset(); toast('Zpráva je připravena. V prototypu se neodesílá.'); });
+  $('#contact-form')?.addEventListener('submit', event => { event.preventDefault(); event.currentTarget.reset(); toast('Zpráva je připravena a neodesílá se mimo toto zařízení.'); });
   bindInquiry();
   bindAdmin();
 }
@@ -487,7 +487,7 @@ function bindInquiry() {
     const total = ['kola','elektrokola','detska-kola','kolobezky'].reduce((sum, key) => sum + Number(form.elements[key].value), 0);
     if (!total) { toast('Vyberte alespoň jeden kus vybavení.'); form.elements.kola.focus(); return; }
     const summary = createSmsSummary(form);
-    $('#inquiry-result').innerHTML = `<section class="success-panel"><span>${svgIcon('check')}</span><h2>Poptávka je připravena</h2><p>V prototypu se nikam neodeslala. Níže je formát připravený pro budoucí webhook / SMS službu.</p><pre>${esc(summary)}</pre><button class="button secondary" id="copy-summary" type="button">Kopírovat souhrn</button></section>`;
+    $('#inquiry-result').innerHTML = `<section class="success-panel"><span>${svgIcon('check')}</span><h2>Poptávka je připravena</h2><p>Poptávka se nikam neodeslala. Níže je formát připravený pro budoucí webhook / SMS službu.</p><pre>${esc(summary)}</pre><button class="button secondary" id="copy-summary" type="button">Kopírovat souhrn</button></section>`;
     $('#copy-summary').addEventListener('click', async () => { await navigator.clipboard?.writeText(summary); toast('Souhrn zkopírován.'); });
     $('#inquiry-result').scrollIntoView({ behavior: 'smooth' });
   });

@@ -26,13 +26,6 @@ npm test
 
 Formuláře nic neodesílají mimo zařízení. Poptávka vytváří pouze čitelný souhrn připravený pro pozdější webhook / SMS integraci.
 
-## Netlify
-
-- Produkční URL: https://pujcovna-pod-palavou.netlify.app/
-- Site: `pujcovna-pod-palavou`
-- Další deployment: `npm run build` a poté `npx netlify-cli deploy --prod --dir dist`
-- Vlastní doména není připojena.
-
 ## GitHub Pages
 
 GitHub Actions workflow `.github/workflows/pages.yml` při každé změně větve `main` spustí testy, vytvoří statický build a nasadí jej na GitHub Pages. Relativní cesty assetů a hash routing fungují i pod projektovým base path.
