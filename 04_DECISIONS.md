@@ -60,3 +60,10 @@
 - Rozhodnutí: Veřejná Půjčovna zobrazuje čtyři obecné kategorie a obecné příslušenství; konkrétní produkty zůstávají pouze v datové a administrační vrstvě.
 - Důvod: Kratší a srozumitelnější nabídka odpovídající skutečnému procesu poptávky.
 - Dopady: Cena kategorie se načítá z `prices`, fotografie a popis z `categories`; vše zůstává řaditelné a editovatelné v adminu.
+
+### 2026-10-06 Figma jako věrná UI reference pro Framer
+
+- Kontext: Schválený funkční prototyp je zdrojem pravdy pro další vizuální práci.
+- Rozhodnutí: Vytvořit samostatný Figma Design soubor se strukturou Cover, Foundations, Components, Desktop a Mobile. Živé stránky převést jako editovatelné vrstvy, zdrojové tokeny převést na lokální variables/styles a klíčové prvky doplnit jako komponenty s Auto Layoutem.
+- Důvod: Zachová se aktuální vzhled a obsah, zároveň vznikne přehledný podklad pro navazující Framer implementaci.
+- Dopady: Soubor obsahuje 7 desktopových a 7 mobilních obrazovek, Lightbox a stav jezdce >= 180 cm; žádný redesign ani změna webového kódu nebyly součástí převodu.

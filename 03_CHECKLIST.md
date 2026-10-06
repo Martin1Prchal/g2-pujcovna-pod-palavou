@@ -41,3 +41,10 @@
 - [x] Nepoužívaná logika query filtru a konfigurace dřívějšího hostingu jsou odstraněné
 - [x] GitHub Pages workflow zůstává beze změny
 - [x] Projekt je připravený pro další fázi Figma → Framer
+- [x] Figma soubor obsahuje Cover, Foundations, Components, Desktop a Mobile
+- [x] Ve Figmě je všech 7 desktopových návrhů na šířce 1440 px
+- [x] Ve Figmě je všech 7 mobilních návrhů na šířce 390 px
+- [x] Galerie obsahuje desktopový i mobilní Lightbox stav
+- [x] Poptávka obsahuje stav jezdce s výškou >= 180 cm
+- [x] Figma foundations obsahují variables, text styles a effect style
+- [x] Klíčové UI prvky jsou ve Figmě vytvořené jako znovupoužitelné komponenty s Auto Layoutem
