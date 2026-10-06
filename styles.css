@@ -128,8 +128,8 @@ h3 { font-size: 1.2rem; line-height: 1.22; font-weight: 650; margin-bottom: 8px;
 .filter-button { min-height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--line); background: #fbf7f1; color: var(--ink); cursor: pointer; }
 .filter-button:hover, .filter-button.active { background: var(--red); border-color: var(--red); color: white; }
 .accessory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.accessory-card { border: 1px solid var(--line); background: var(--paper); border-radius: 16px; overflow: hidden; }
-.accessory-card img { width: 100%; height: 150px; object-fit: cover; }
+.accessory-card { display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--paper); border-radius: 16px; overflow: hidden; }
+.accessory-card img { width: 100%; height: 180px; padding: 14px; object-fit: contain; object-position: center; background: white; }
 .accessory-card > div { padding: 16px; }
 .accessory-card p { color: var(--muted); font-size: .84rem; min-height: 40px; }
 .accessory-card strong { color: var(--red); }
@@ -341,7 +341,7 @@ textarea { resize: vertical; }
   .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
   .filter-button { white-space: nowrap; }
   .accessory-grid { grid-template-columns: repeat(2, 1fr); }
-  .accessory-card img { height: 110px; }
+  .accessory-card img { height: 170px; }
   .pricing-lower { grid-template-columns: 1fr; }
   .mini-price-grid { grid-template-columns: 1fr 1fr; }
   .included > div { grid-template-columns: 1fr; }

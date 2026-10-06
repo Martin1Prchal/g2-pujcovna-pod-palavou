@@ -96,6 +96,13 @@ test('půjčovna zobrazuje obecné kategorie místo jednotlivých modelů', () =
   assert.ok(initialData.categories.filter(item => ['kola','elektrokola','detska-kola','kolobezky'].includes(item.id)).every(item => item.image));
 });
 
+test('obrázky příslušenství jsou celé viditelné bez ořezu a deformace', () => {
+  const imageRule = css.match(/\.accessory-card img\s*\{[^}]+\}/)?.[0] || '';
+  assert.match(imageRule, /object-fit:\s*contain/);
+  assert.match(imageRule, /object-position:\s*center/);
+  assert.doesNotMatch(imageRule, /object-fit:\s*cover/);
+});
+
 test('ve viditelném UI nejsou emoji ikony', () => {
   assert.doesNotMatch(app, /[🚲⚡🌱📍🛴🔒☎✉🚗🔧ⓘ]/u);
   assert.doesNotMatch(JSON.stringify(initialData), /[🚲⚡🌱📍🛴🔒☎✉🚗🔧ⓘ]/u);
