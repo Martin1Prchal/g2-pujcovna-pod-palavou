@@ -1,4 +1,4 @@
-export const STORAGE_KEY = 'g2-pujcovna-content-v1';
+export const STORAGE_KEY = 'g2-pujcovna-content-v2';
 
 export const initialData = {
   meta: { version: 2, project: 'G2 · Redesign webu půjčovny kol' },
@@ -6,7 +6,7 @@ export const initialData = {
     name: 'Půjčovna jízdních kol pod Pálavou',
     shortName: 'Půjčovna pod Pálavou',
     logo: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001606-a2fa2a2fa5/700/1%20nov%C3%A9%20na%20web.webp?ph=a6234f4d0c',
-    hero: 'https://www.palava.cz/templates/yootheme/cache/b5/palava-slide-03-b52d6fbd.jpeg',
+    hero: 'https://www.nadpavlovem.cz/wp-content/uploads/2022/07/devicky-divci-hrad-palava-pavlov.jpg',
     slogan: 'Na kolech za krásami jižní Moravy'
   },
   contact: {
@@ -93,11 +93,11 @@ export const initialData = {
     { id: 'kostka-kid', name: 'Kostka Kid Mini', category: 'kolobezky', description: 'Lehká koloběžka pro děti.', params: ['Vhodnost ověříme podle věku a výšky'], riderHeight: 'pro děti', price: 400, active: true, image: 'https://a6234f4d0c.clvaw-cdnwnd.com/823d9c839767ddafdae502964a71cea7/200001099-1f61a1f61c/KOSTKA%20KID%20MINI%202%20a-2.PNG?ph=a6234f4d0c' }
   ],
   accessories: [
-    { id: 'helma', name: 'Helma', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://images.unsplash.com/photo-1529422643029-d4585747aaf2?auto=format&fit=crop&w=500&q=80' },
-    { id: 'zamek', name: 'Zámek', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://images.unsplash.com/photo-1583227122027-d2d360c66d3c?auto=format&fit=crop&w=500&q=80' },
-    { id: 'sedacka', name: 'Dětská sedačka', price: 100, note: 'Pro děti do 22 kg', active: true, image: 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?auto=format&fit=crop&w=500&q=80' },
-    { id: 'rukavice', name: 'Cyklistické rukavice', price: 30, note: 'Doplňkové vybavení', active: true, image: 'https://images.unsplash.com/photo-1529422643029-d4585747aaf2?auto=format&fit=crop&w=500&q=80' },
-    { id: 'gel', name: 'Gelový potah', price: 30, note: 'Doplňkové vybavení', active: true, image: 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=500&q=80' }
+    { id: 'helma', name: 'Helma', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://www.top-cyklo.cz/fotky87581/fotos/_vyr_4960_ath31p.jpg' },
+    { id: 'zamek', name: 'Zámek', price: 0, note: 'K zapůjčenému kolu zdarma', active: true, image: 'https://www.cyklosportm.cz/fotky6857/fotos/_vyr_7159_98157-merida-zamek-na-kolo-klic-10-1800mm.webp' },
+    { id: 'sedacka', name: 'Dětská sedačka', price: 100, note: 'Pro děti do 22 kg', active: true, image: 'https://www.top-cyklo.cz/fotky87581/fotos/_vyr_5731_set-8.jpg' },
+    { id: 'rukavice', name: 'Cyklistické rukavice', price: 30, note: 'Doplňkové vybavení', active: true, image: 'https://cdn.mountfield.cz/content/images/product/default/14996.jpg' },
+    { id: 'gel', name: 'Gelový potah', price: 30, note: 'Doplňkové vybavení', active: true, image: 'https://www.insportline.cz/upload/product/640x640/Navrh_bez_nazvu_10.jpg.webp' }
   ],
   prices: [
     { id: 'p1', category: 'kola', label: 'Jízdní kolo', day: 500, description: 'Cena za jeden den', active: true },
@@ -109,9 +109,9 @@ export const initialData = {
     { id: 'd1', place: 'Předem domluvené místo', price: 'individuálně', active: true }
   ],
   trips: [
-    { id: 't1', name: 'Okruh kolem Novomlýnských nádrží', category: 'lehke', description: 'Pohodový okruh ze Šakvic kolem vody a vinic.', longDescription: 'Rovinatá trasa vhodná pro rekreační cyklisty a rodiny se staršími dětmi. Nabízí výhledy na Pálavu a několik možností občerstvení.', distance: '38 km', time: '4–5 hod', difficulty: 'Lehká', roadRatio: '70 % cyklostezka / 30 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6500,48.8850;16.6060,48.8980;16.6750,48.9360&routeType=bike_road', active: true, image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85' },
+    { id: 't1', name: 'Okruh kolem Novomlýnských nádrží', category: 'lehke', description: 'Pohodový okruh ze Šakvic kolem vody a vinic.', longDescription: 'Rovinatá trasa vhodná pro rekreační cyklisty a rodiny se staršími dětmi. Nabízí výhledy na Pálavu a několik možností občerstvení.', distance: '38 km', time: '4–5 hod', difficulty: 'Lehká', roadRatio: '70 % cyklostezka / 30 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6500,48.8850;16.6060,48.8980;16.6750,48.9360&routeType=bike_road', active: true, image: 'https://cdn.kudyznudy.cz/files/c1/c1b98df8-0a1a-42b4-894a-7cccdc913ae8.webp?v=20260923194159' },
     { id: 't2', name: 'Pavlov a Pálava', category: 'vyhledy', description: 'Vinařské obce, krajina a zastávky podle vlastního tempa.', longDescription: 'Výlet propojuje Šakvice, Dolní Věstonice a Pavlov. Po cestě čekají výhledy na hřebeny Pálavy i Novomlýnské nádrže.', distance: '28 km', time: '3–4 hod', difficulty: 'Střední', roadRatio: '55 % cyklostezka / 45 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6425,48.8877;16.6725,48.8750&routeType=bike_road', active: true, image: 'https://www.palava.cz/templates/yootheme/cache/b5/palava-slide-03-b52d6fbd.jpeg' },
-    { id: 't3', name: 'Lednicko-valtický areál', category: 'pamatky', description: 'Celodenní inspirace za krajinou a památkami.', longDescription: 'Delší výlet k lednickému zámku a komponované krajině. Doporučujeme vyhradit celý den a počítat s návštěvnickým provozem.', distance: '62 km', time: '6–8 hod', difficulty: 'Střední', roadRatio: '60 % cyklostezka / 40 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.8035,48.7997;16.7750,48.7410&routeType=bike_road', active: true, image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85' },
+    { id: 't3', name: 'Lednicko-valtický areál', category: 'pamatky', description: 'Celodenní inspirace za krajinou a památkami.', longDescription: 'Delší výlet k lednickému zámku a komponované krajině. Doporučujeme vyhradit celý den a počítat s návštěvnickým provozem.', distance: '62 km', time: '6–8 hod', difficulty: 'Střední', roadRatio: '60 % cyklostezka / 40 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.8035,48.7997;16.7750,48.7410&routeType=bike_road', active: true, image: 'https://www.proprarodice.cz/img/magazin/clanky/Lednicko-valticky-areal-radime-k-nejcenejsim-lokalitam-66726f58ddc3f.jpg' },
     { id: 't4', name: 'Vinařské obce pod Pálavou', category: 'vinarske', description: 'Pohodová jízda mezi vinicemi a obcemi jižní Moravy.', longDescription: 'Trasa vede krajinou vinohradů a menších obcí. Hodí se pro klidný půldenní výlet s možností zastavit na více místech.', distance: '25 km', time: '3–4 hod', difficulty: 'Lehká', roadRatio: '65 % cyklostezka / 35 % silnice', mapyUrl: 'https://mapy.com/fnc/v1/route?mapset=outdoor&start=16.7156,48.8970&end=16.7156,48.8970&waypoints=16.6040,48.8520;16.4930,48.8380&routeType=bike_road', active: true, image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=85' }
   ],
   gallery: [
