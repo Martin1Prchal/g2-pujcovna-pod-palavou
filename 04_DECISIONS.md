@@ -67,3 +67,17 @@
 - Rozhodnutí: Vytvořit samostatný Figma Design soubor se strukturou Cover, Foundations, Components, Desktop a Mobile. Živé stránky převést jako editovatelné vrstvy, zdrojové tokeny převést na lokální variables/styles a klíčové prvky doplnit jako komponenty s Auto Layoutem.
 - Důvod: Zachová se aktuální vzhled a obsah, zároveň vznikne přehledný podklad pro navazující Framer implementaci.
 - Dopady: Soubor obsahuje 7 desktopových a 7 mobilních obrazovek, Lightbox a stav jezdce >= 180 cm; žádný redesign ani změna webového kódu nebyly součástí převodu.
+
+### 2026-10-10 Jednotná desktopová osa ceníku ve Frameru
+
+- Kontext: Sdílený code component již používá `.wrap` s maximální šířkou 1180 px, ale canvas wrappery ceníku přidávaly další horizontální paddingy a spodní řádek používal `maxWidth: 1400px`.
+- Rozhodnutí: Zachovat existující komponenty i jejich interní design a upravit pouze vnější desktopové wrappery na jednotnou šířku 1180 px bez dodatečného levého a pravého paddingu.
+- Důvod: Header, hero, ceník, doplňkové bloky, CTA a footer tak sdílejí stejnou obsahovou osu bez paralelního wrapper systému.
+- Dopady: Vertikální odsazení zůstalo zachované; tabletové a mobilní paddingy jsou explicitně ponechané v původních hodnotách.
+
+### 2026-10-12 Kanonická coded verze a portfolio standard
+
+- Kontext: Projekt má více historických deploymentů a dokumentaci z několika pracovních fází.
+- Rozhodnutí: Za kanonickou coded verzi považovat GitHub Pages z větve `main`; starší statický deployment zachovat beze změny a Firebase pouze dokumentovat jako historický placeholder. README, finální audit a case study používat jako hlavní prezentační vstup.
+- Důvod: GitHub Pages odpovídají aktuálnímu repozitáři a prošly opakovaným buildem i responzivním smoke testem.
+- Dopady: Žádný deployment nebyl odstraněn. Technický název balíčku je sjednocen s repository a metadata odkazují na kanonický URL.

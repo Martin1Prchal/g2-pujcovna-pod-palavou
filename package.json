@@ -1,8 +1,8 @@
 {
-  "name": "g2-redesign-pujcovny-kol",
+  "name": "g2-pujcovna-pod-palavou",
   "version": "0.1.0",
   "private": true,
-  "description": "Funkční lokální prototyp redesignu půjčovny kol pod Pálavou",
+  "description": "Portfolio redesign concept for Půjčovna pod Pálavou",
   "scripts": {
     "start": "node server.cjs",
     "build": "node scripts/build.mjs",

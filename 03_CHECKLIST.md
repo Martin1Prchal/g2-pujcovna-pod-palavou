@@ -48,3 +48,9 @@
 - [x] Poptávka obsahuje stav jezdce s výškou >= 180 cm
 - [x] Figma foundations obsahují variables, text styles a effect style
 - [x] Klíčové UI prvky jsou ve Figmě vytvořené jako znovupoužitelné komponenty s Auto Layoutem
+- [x] Framer stránka Ceník používá na desktopu jednotnou obsahovou osu `max-width: 1180px`
+- [x] Tabletové a mobilní wrappery zůstaly při úpravě desktopu beze změny
+- [x] Finální testy 14/14 a produkční build prošly
+- [x] Produkční GitHub Pages ověřeny na 1440, 820 a 390 px bez horizontálního overflow
+- [x] README sjednoceno s prezentačním standardem G1/G3
+- [x] Vytvořeny `docs/FINAL_AUDIT.md` a `docs/CASE_STUDY.md`
